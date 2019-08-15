@@ -3,7 +3,7 @@
 
 #### usage:
 
-Extract the scripts from the game using [SciADVnet/Ungelify](https://github.com/CommitteeOfZero/SciAdv.Net) and convert them to readable .txt files using [sc3ntist/SCXParser](https://github.com/CommitteeOfZero/sc3ntist) (for original Steins;Gate Steam, Steins;Gate 0 or Chaos;Child) or [SciADVnet/ProjectAmadeus](https://github.com/CommitteeOfZero/SciAdv.Net) (For the original Steins;Gate Steam)
+Extract the scripts from the game using [SciADVnet/Ungelify](https://github.com/CommitteeOfZero/SciAdv.Net) and convert them to readable .txt files using [sc3ntist/SCXParser](https://github.com/KaitoCross/sc3ntist) (for original Steins;Gate Steam, Steins;Gate 0 or Chaos;Child) or [SciADVnet/ProjectAmadeus](https://github.com/CommitteeOfZero/SciAdv.Net) (For the original Steins;Gate Steam)
 Move the .txt files to a seperate, dedicated folder for each game.  
 
 Then, to seperate the character's lines from each other, download this repository and execute in the repository folder:
