@@ -2,7 +2,8 @@
 ### cleaning and seperating scripts for machine learning purposes
 
 #### usage:
-Extract the scripts from the game using [sc3ntist/SCXParser](https://github.com/KaitoCross/sc3ntist) (for Steins;Gate 0 or Chaos;Child) or [SciADVnet/ProjectAmadeus](https://github.com/CommitteeOfZero/SciAdv.Net) (For the original Steins;Gate Steam)  
+
+Extract the scripts from the game using [SciADVnet/Ungelify](https://github.com/CommitteeOfZero/SciAdv.Net) and convert them to readable .txt files using [sc3ntist/SCXParser](https://github.com/CommitteeOfZero/sc3ntist) (for original Steins;Gate Steam, Steins;Gate 0 or Chaos;Child) or [SciADVnet/ProjectAmadeus](https://github.com/CommitteeOfZero/SciAdv.Net) (For the original Steins;Gate Steam)
 Move the .txt files to a seperate, dedicated folder for each game.  
 
 Then, to seperate the character's lines from each other, download this repository and execute in the repository folder:
@@ -12,7 +13,6 @@ python3 prep_scripts.py path_to_folder_with_scripts outputfolder
 if you want to seperate the e-mails as well:
 python3 prep_scripts.py path_to_folder_with_scripts outputfolder path_to_emailtextfile
 ```
-
 #####prep_scripts_for_voice.py
 This is a script that helps generating text-voice-pairs for Tacotron2. To generate them, you also need to extract all voice files of the game. Currently, it generates these pairs for all main characters of Steins;Gate.
 Currently this script only supports scripts taken from the original Steins;Gate VN that include the audio ID. My fork of SCXParser is capable of providing these using the filerPerson branch of the program.
@@ -26,4 +26,3 @@ How the generated files looks like:
 ```
 
 Have fun!
-
