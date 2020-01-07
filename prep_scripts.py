@@ -5,7 +5,7 @@ from os import listdir
 from os.path import isfile, join
 
 def clean_str(clearme):
-	loopy = re.split('\[[0-9]+\]|\[color index="[0-9a-fA-F]+"\]|\[%p\]|\n|”|“|\[rubyBase\]|\[center\]|\[rubyTextEnd\]|\[margin top="[0-9]+"\]|\[margin top="\-[0-9]+"\]|\[margin left="[0-9]+"\]|\[margin left="\-[0-9]+"\]|\[%e\]|\[font size="[0-9]+"\]|\[font size="\-[0-9]+"\]|\[evaluate expr="[0-9a-fA-F]+"\]|\[linebreak\]|\[alt\-linebreak\]',clearme)
+	loopy = re.split('\[[0-9]+\]|\[color index="[0-9a-fA-F]+"\]|\[%p\]|\n|」|「|”|“|\[rubyBase\]|\[ruby\-base\]|\[center\]|\[rubyTextEnd\]|\[ruby\-text\-end\]|\[ruby\-text\-start\]|\[margin top="[A-Fa-f0-9]+"\]|\[margin top="\-[A-Fa-f0-9]+"\]|\[margin left="[A-Fa-f0-9]+"\]|\[margin left="\-[0-9]+"\]|\[%e\]|\[font size="[A-Fa-f0-9]+"\]|\[font size="\-[A-Fa-f0-9]+"\]|\[evaluate expr="[0-9a-zA-Z =]+"\]|\[linebreak\]|\[alt\-linebreak\]|『|』|\[auto\-forward\]|\[unk\-[a-fA-F0-9]+\]|\[auto\-forward\-1a\]|\[ruby\-center\-per\-char\]|\[parallel\]|\[%e\]|\[%18\]|\[hardcoded\-value index="[a-zA-Z0-9]+\]',clearme)
 	empty_s = ""
 	for subtext in loopy:
 		if subtext:
@@ -16,6 +16,8 @@ def clean_str(clearme):
 def lineclassify(line,filename):
 	character = ""
 	c_line = ""
+	audioId=""
+	characterId=""
 	chapter = "0"
 	is_OG_SG = True
 	if "SG0_" in filename:
@@ -37,6 +39,10 @@ def lineclassify(line,filename):
 					print(sliced_line)
 			if i > 1 and sliced_line[i-1] == "line":
 				c_line += sliced_line[i]
+			if i > 1 and sliced_line[i-1] == "audioId":
+				audioId += sliced_line[i]
+			if "#characterId=" in sliced_line[i]:
+				characterId += re.split("=")[1]
 	else:
 		character = "Narrator"
 		c_line = line
@@ -49,7 +55,7 @@ def lineclassify(line,filename):
 	if not character or not c_line:
 		print(sliced_line)
 		print(line)
-	return {"name": character, "line": c_line, "chapter": chapter}
+	return {"name": character, "line": c_line, "chapter": chapter, "audioId": audioId, "characterId": characterId}
 	
 linedict = {"fullgame":[]}
 fileList = []
