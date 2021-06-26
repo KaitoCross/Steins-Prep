@@ -13,8 +13,6 @@ def romanize(jpn_text):
 	return unicodedata.normalize('NFKC',conv.do(jpn_text)).translate(table)
 
 def clean_str(clearme):
-	#loopy = re.split('\[[0-9]+\]|\[color index="[0-9a-fA-F]+"\]|\[%p\]|\n|」|「|”|“|\[rubyBase\]|\[ruby\-base\]|\[center\]|\[rubyTextEnd\]|\[ruby\-text\-end\]|\[ruby\-text\-start\]|\[margin top="[A-Fa-f0-9]+"\]|\[margin top="\-[A-Fa-f0-9]+"\]|\[margin left="[A-Fa-f0-9]+"\]|\[margin left="\-[0-9]+"\]|\[%e\]|\[font size="[A-Fa-f0-9]+"\]|\[font size="\-[A-Fa-f0-9]+"\]|\[evaluate expr="[0-9a-fA-F]+"\]|\[linebreak\]|\[alt\-linebreak\]|『|』',clearme)
-	
 	loopy = re.split('\[[0-9]+\]|\[color index="[0-9a-fA-F]+"\]|\[%p\]|\n|」|「|”|“|\[rubyBase\]|\[ruby\-base\]|\[center\]|\[rubyTextEnd\]|\[ruby\-text\-end\]|\[ruby\-text\-start\]|\[margin top="[A-Fa-f0-9]+"\]|\[margin top="\-[A-Fa-f0-9]+"\]|\[margin left="[A-Fa-f0-9]+"\]|\[margin left="\-[0-9]+"\]|\[%e\]|\[font size="[A-Fa-f0-9]+"\]|\[font size="\-[A-Fa-f0-9]+"\]|\[evaluate expr="[0-9a-zA-Z =]+"\]|\[linebreak\]|\[alt\-linebreak\]|『|』|\[auto\-forward\]|\[unk\-[a-fA-F0-9]+\]|\[auto\-forward\-1a\]|\[ruby\-center\-per\-char\]|\[parallel\]|\[%e\]|\[%18\]|\[hardcoded\-value index="[a-zA-Z0-9]+\]',clearme)
 	empty_s = ""
 	for subtext in loopy:
@@ -113,7 +111,8 @@ if scriptpath and newpath:
 				cleaned_str = clean_str(line)
 				line_props = lineclassify(cleaned_str,filename)
 				audio_id = line_props["audioId"]
-				#print(oggFilenames[audio_id])
+				if not audio_id:
+					continue
 				if line_props["characterId"] in audioCsvLineDict:
 					audioCsvLineDict[line_props["characterId"]].append(line_props["line"]+"|"+romanize(line_props["line"])+"|"+oggFilenames[audio_id])
 				else:
