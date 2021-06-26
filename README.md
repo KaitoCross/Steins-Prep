@@ -3,9 +3,9 @@
 
 #### usage:
 
-Extract the scripts from the game using [SciADVnet's Ungelify](https://github.com/KaitoCross/SciAdv.Net/tree/transition) (from the transition branch of my fork) and convert them to readable .txt files using [sc3ntist/SCXParser](https://github.com/KaitoCross/sc3ntist) (for original Steins;Gate Steam, Steins;Gate 0 or Chaos;Child) or [SciADVnet/ProjectAmadeus](https://github.com/CommitteeOfZero/SciAdv.Net) (For the original Steins;Gate Steam)
+Extract the scripts from the game using [SciADVnet's Ungelify](https://github.com/KaitoCross/SciAdv.Net/tree/transition) (from the transition branch of my fork) and convert them to readable .txt files using [sc3ntist/SCXParser](https://github.com/KaitoCross/sc3ntist/tree/filterText) (my custom fork, filterText branch) (for original Steins;Gate Steam, Steins;Gate 0 or Chaos;Child) or [SciADVnet/ProjectAmadeus](https://github.com/CommitteeOfZero/SciAdv.Net) (For the original Steins;Gate Steam)
 
-Move the .txt files to a seperate, dedicated folder for each game.  
+Move the .txt files (whose names start with "SG" and end with "characterlines" or "voicedlines") to a seperate, dedicated folder for each game.  
 
 Then, to seperate the character's lines from each other, download this repository and execute in the repository folder:
 ##### prep_scripts.py
